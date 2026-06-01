@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0f172a;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background: #111827;
+    padding: 20px;
+    border-right: 1px solid #1e293b;
+}
+
+.logo {
+    margin-bottom: 30px;
+}
+
+.logo h3 {
+    color: white;
+    margin: 0;
+}
+
+.logo small {
+    color: #94a3b8;
+}
+
+.menu-title {
+    color: #64748b;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 8px;
+}
+
+.sidebar ul li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background: #1e293b;
+    color: white;
+}
+
+.main-content {
+    flex: 1;
+}
+
+.navbar-custom {
+    background: #111827;
+    padding: 20px 30px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1e293b;
+}
+
+.admin-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.admin-box i {
+    font-size: 22px;
+}
+
+.admin-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-info small {
+    color: #94a3b8;
+}
+
+.content {
+    padding: 30px;
+    color: white;
+}
+
+.page-header p {
+    color: #94a3b8;
+}
+
+.stats-card {
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.stats-card i {
+    font-size: 40px;
+}
+
+.primary {
+    background: #2563eb;
+}
+
+.success {
+    background: #10b981;
+}
+
+.warning {
+    background: #f59e0b;
+}
+
+.danger {
+    background: #ef4444;
+}
+
+.custom-card {
+    background: #111827;
+    border-radius: 15px;
+    padding: 20px;
+    height: 100%;
+}
+
+.card-header-custom {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.chart-placeholder {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #334155;
+    border-radius: 10px;
+    color: #94a3b8;
+}
+
+.activity-list {
+    padding-left: 18px;
+}
+
+.activity-list li {
+    margin-bottom: 15px;
+}
