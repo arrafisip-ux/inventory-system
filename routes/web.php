@@ -29,3 +29,6 @@ Route::get('/barang-keluar', function () {
 Route::get('/laporan', function () {
     return view('laporan.index');
 });
+
+
+// require __DIR__.'/auth.php';
