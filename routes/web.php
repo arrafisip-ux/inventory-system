@@ -8,11 +8,11 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-});
+})->name('dashboard');
 
-Route::get('/kategori', function () {
-    return view('kategori.index');
-});
+use App\Http\Controllers\KategoriController;
+
+Route::resource('kategori', KategoriController::class);
 
 Route::get('/barang', function () {
     return view('barang.index');
