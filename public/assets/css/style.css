@@ -162,11 +162,28 @@ body {
 }
 
 .activity-list {
-    padding-left: 18px;
+    list-style: none;
+    padding-left: 0;
 }
 
 .activity-list li {
-    margin-bottom: 15px;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 18px;
+    color: #e2e8f0;
+}
+
+.activity-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+
+    width: 10px;
+    height: 10px;
+
+    background: #10b981;
+    border-radius: 50%;
 }
 
 .custom-card label {
@@ -175,7 +192,121 @@ body {
     margin-bottom: 8px;
     display: block;
 }
+.activity-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
 
+.activity-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 20px;
+    color: #e2e8f0;
+    line-height: 1.6;
+}
+
+.activity-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    background: #10b981;
+    border-radius: 50%;
+}
+.activity-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+
+    width: 10px;
+    height: 10px;
+
+    background: #10b981;
+    border-radius: 50%;
+}
+/* Barang Masuk */
+.activity-success::before {
+    background: #10b981;
+}
+
+/* Barang Keluar */
+.activity-danger::before {
+    background: #ef4444;
+}
+
+/* Kategori */
+.activity-info::before {
+    background: #3b82f6;
+}
+
+/* Update */
+.activity-warning::before {
+    background: #f59e0b;
+}
+
+.page-title,
+.page-header h1,
+.section-title {
+    color: #e2e8f0;
+}
+.page-header {
+    margin-bottom: 25px;
+}
+
+.page-header h2 {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.page-header p {
+    color: #94a3b8;
+    font-size: 15px;
+}
+
+.page-header h1 {
+    color: #ffffff !important;
+}
+
+.page-header p {
+    color: #94a3b8 !important;
+}
+
+.card-header-custom {
+    color: #ffffff !important;
+}
+
+.activity-list li {
+    color: #cbd5e1 !important;
+}
+
+.card-header-custom {
+    color: white;
+    font-weight: 700;
+}
+
+.stats-card h2 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.stats-card p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+#inventoryChart {
+    height: 320px !important;
+    width: 100% !important;
+}
+.chart-placeholder,
+.card-header-custom {
+    color: #ffffff;
+}
 /* =========================
    TABLET
 ========================= */

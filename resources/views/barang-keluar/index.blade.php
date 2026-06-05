@@ -12,13 +12,19 @@
     Tambah Barang Keluar
 </a>
 
+<div class="custom-card">
+
 @if(session('success'))
-<div class="alert alert-success">
+<div class="alert alert-success mb-3">
     {{ session('success') }}
 </div>
 @endif
 
-<div class="custom-card">
+@if(session('error'))
+<div class="alert alert-danger mb-3">
+    {{ session('error') }}
+</div>
+@endif
 
 <table class="table table-dark table-hover">
 
@@ -32,11 +38,12 @@
 
     <tbody>
 
-    @forelse($barangKeluars as $keluar)
+        @forelse($barangKeluars as $keluar)
 
         <tr>
             <td>
-                {{ date('d-m-Y', strtotime($keluar->tanggal)) }}
+                {{ date('d-m-Y',
+                strtotime($keluar->tanggal)) }}
             </td>
 
             <td>
@@ -48,15 +55,16 @@
             </td>
         </tr>
 
-    @empty
+        @empty
 
         <tr>
-            <td colspan="3" class="text-center">
-                Belum ada transaksi barang keluar
+            <td colspan="3"
+                class="text-center">
+                Belum ada data
             </td>
         </tr>
 
-    @endforelse
+        @endforelse
 
     </tbody>
 

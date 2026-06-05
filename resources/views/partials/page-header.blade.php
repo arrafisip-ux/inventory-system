@@ -1,8 +1,11 @@
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <div>
-        <h2 class="mb-1">Data Barang</h2>
-        <p class="text-secondary mb-0">
-            Kelola data inventaris barang
-        </p>
-    </div>
+<div class="page-header mb-4">
+
+    <h2 class="mb-1">
+        @yield('title')
+    </h2>
+
+    <p class="mb-0">
+        @yield('subtitle')
+    </p>
+
 </div>

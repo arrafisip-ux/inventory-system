@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title','Tambah Barang Keluar')
-@section('subtitle','Input transaksi barang keluar')
+@section('title','Barang Keluar')
+@section('subtitle','Tambah transaksi barang keluar')
 
 @section('content')
 
@@ -15,10 +15,7 @@
     @csrf
 
     <div class="mb-3">
-
-        <label class="text-white mb-2">
-            Barang
-        </label>
+        <label>Barang</label>
 
         <select name="barang_id"
                 class="form-control"
@@ -32,45 +29,30 @@
 
                 <option value="{{ $barang->id }}">
                     {{ $barang->nama_barang }}
-                    (Stok: {{ $barang->stok }})
+                    (Stok : {{ $barang->stok }})
                 </option>
 
             @endforeach
 
         </select>
-
     </div>
 
     <div class="mb-3">
-
-        <label class="text-white mb-2">
-            Jumlah
-        </label>
+        <label>Jumlah</label>
 
         <input type="number"
                name="jumlah"
                class="form-control"
                required>
-
-        @error('jumlah')
-            <small class="text-danger">
-                {{ $message }}
-            </small>
-        @enderror
-
     </div>
 
     <div class="mb-3">
-
-        <label class="text-white mb-2">
-            Tanggal
-        </label>
+        <label>Tanggal</label>
 
         <input type="date"
                name="tanggal"
                class="form-control"
                required>
-
     </div>
 
     <button type="submit"

@@ -11,8 +11,8 @@ class BarangKeluarController extends Controller
     public function index()
     {
         $barangKeluars = BarangKeluar::with('barang')
-                            ->latest()
-                            ->get();
+            ->latest()
+            ->get();
 
         return view(
             'barang-keluar.index',
@@ -43,13 +43,10 @@ class BarangKeluarController extends Controller
         );
 
         if ($request->jumlah > $barang->stok) {
-
-            return back()
-                ->withErrors([
-                    'jumlah' =>
-                    'Jumlah melebihi stok tersedia'
-                ])
-                ->withInput();
+            return back()->with(
+                'error',
+                'Stok tidak mencukupi'
+            );
         }
 
         BarangKeluar::create([
@@ -59,7 +56,6 @@ class BarangKeluarController extends Controller
         ]);
 
         $barang->stok -= $request->jumlah;
-
         $barang->save();
 
         return redirect('/barang-keluar')
@@ -71,17 +67,23 @@ class BarangKeluarController extends Controller
 
     public function show(string $id)
     {
+        //
     }
 
     public function edit(string $id)
     {
+        //
     }
 
-    public function update(Request $request, string $id)
-    {
+    public function update(
+        Request $request,
+        string $id
+    ) {
+        //
     }
 
     public function destroy(string $id)
     {
+        //
     }
 }

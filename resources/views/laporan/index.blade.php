@@ -7,55 +7,124 @@
 
 @include('partials.page-header')
 
-<div class="row mb-3">
+<form action="{{ route('laporan') }}" method="GET">
 
-    <div class="col-md-4">
-        <input type="date" class="form-control">
+    <div class="row mb-3">
+
+        <div class="col-md-4">
+
+            <input
+                type="date"
+                name="dari"
+                value="{{ $dari }}"
+                class="form-control">
+
+        </div>
+
+        <div class="col-md-4">
+
+            <input
+                type="date"
+                name="sampai"
+                value="{{ $sampai }}"
+                class="form-control">
+
+        </div>
+
+        <div class="col-md-4">
+
+            <button
+                type="submit"
+                class="btn btn-primary">
+                Filter
+            </button>
+
+            <button
+                type="button"
+                class="btn btn-success">
+                Cetak
+            </button>
+
+        </div>
+
     </div>
 
-    <div class="col-md-4">
-        <input type="date" class="form-control">
-    </div>
-
-    <div class="col-md-4">
-        <button class="btn btn-primary">
-            Filter
-        </button>
-
-        <button class="btn btn-success">
-            Cetak
-        </button>
-    </div>
-
-</div>
+</form>
 
 <div class="custom-card">
 
-    <table class="table table-dark table-hover">
+    <div class="table-responsive">
 
-        <thead>
+        <table class="table table-dark table-hover">
 
-            <tr>
-                <th>Tanggal</th>
-                <th>Barang</th>
-                <th>Jenis</th>
-                <th>Jumlah</th>
-            </tr>
+            <thead>
 
-        </thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Barang</th>
+                    <th>Jenis</th>
+                    <th>Jumlah</th>
+                </tr>
 
-        <tbody>
+            </thead>
 
-            <tr>
-                <td>01-06-2026</td>
-                <td>Laptop</td>
-                <td>Masuk</td>
-                <td>5</td>
-            </tr>
+            <tbody>
 
-        </tbody>
+            @forelse($laporan as $item)
 
-    </table>
+                <tr>
+
+                    <td>
+                        {{ date('d-m-Y', strtotime($item['tanggal'])) }}
+                    </td>
+
+                    <td>
+                        {{ $item['barang'] }}
+                    </td>
+
+                    <td>
+
+                        @if($item['jenis'] == 'Masuk')
+
+                            <span class="badge bg-success">
+                                Masuk
+                            </span>
+
+                        @else
+
+                            <span class="badge bg-danger">
+                                Keluar
+                            </span>
+
+                        @endif
+
+                    </td>
+
+                    <td>
+                        {{ $item['jumlah'] }}
+                    </td>
+
+                </tr>
+
+            @empty
+
+                <tr>
+
+                    <td colspan="4" class="text-center">
+
+                        Pilih tanggal untuk melihat laporan
+
+                    </td>
+
+                </tr>
+
+            @endforelse
+
+            </tbody>
+
+        </table>
+
+    </div>
 
 </div>
 

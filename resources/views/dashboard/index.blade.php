@@ -13,7 +13,7 @@
         <div class="stats-card primary">
 
             <div>
-                <h3>120</h3>
+                <h3>{{ $totalBarang }}</h3>
                 <span>Total Barang</span>
             </div>
 
@@ -23,23 +23,23 @@
     </div>
 
     <div class="col-md-3">
-        <div class="stats-card success">
+    <div class="stats-card success">
 
-            <div>
-                <h3>12</h3>
-                <span>Total Kategori</span>
-            </div>
-
-            <i class='bx bx-category'></i>
-
+        <div>
+            <h3>{{ $totalKategori }}</h3>
+            <span>Total Kategori</span>
         </div>
+
+        <i class='bx bx-category'></i>
+
     </div>
+</div>
 
     <div class="col-md-3">
         <div class="stats-card warning">
 
             <div>
-                <h3>56</h3>
+                <h3>{{ $barangMasuk }}</h3>
                 <span>Barang Masuk</span>
             </div>
 
@@ -52,7 +52,7 @@
         <div class="stats-card danger">
 
             <div>
-                <h3>34</h3>
+                <h3>{{ $barangKeluar }}</h3>
                 <span>Barang Keluar</span>
             </div>
 
@@ -73,9 +73,7 @@
                 Grafik Inventaris
             </div>
 
-            <div class="chart-placeholder">
-                Grafik akan ditampilkan di sini
-            </div>
+            <canvas id="inventoryChart"></canvas>
 
         </div>
 
@@ -90,16 +88,122 @@
             </div>
 
             <ul class="activity-list">
-                <li>Barang Laptop ditambahkan</li>
-                <li>Barang Printer keluar</li>
-                <li>Kategori Elektronik dibuat</li>
-                <li>Update stok Mouse</li>
-            </ul>
+
+    <li class="activity-success">
+        Barang Laptop ditambahkan
+    </li>
+
+    <li class="activity-danger">
+        Barang Printer keluar
+    </li>
+
+    <li class="activity-info">
+        Kategori Elektronik dibuat
+    </li>
+
+    <li class="activity-warning">
+        Update stok Mouse
+    </li>
+
+</ul>
 
         </div>
 
     </div>
 
 </div>
+
+
+<script>
+
+window.onload = function () {
+
+    const canvas = document.getElementById('inventoryChart');
+
+    new Chart(canvas, {
+
+        type: 'bar',
+
+        data: {
+
+            labels: [
+                'Barang',
+                'Kategori',
+                'Masuk',
+                'Keluar'
+            ],
+
+            datasets: [{
+
+                label: 'Statistik Inventaris',
+
+                data: [
+                    {{ $totalBarang }},
+                    {{ $totalKategori }},
+                    {{ $barangMasuk }},
+                    {{ $barangKeluar }}
+                ],
+
+                backgroundColor: [
+                    '#2563eb',
+                    '#10b981',
+                    '#f59e0b',
+                    '#ef4444'
+                ],
+
+                borderRadius: 12
+            }]
+        },
+
+        options: {
+
+            responsive: true,
+
+            plugins: {
+
+    legend: {
+        display: false
+    }
+
+},
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true,
+
+                    ticks: {
+                        color: '#e2e8f0',
+                        font: {
+                            size: 13
+                        }
+                    },
+
+                    grid: {
+                        color: 'rgba(255,255,255,0.08)'
+                    }
+                },
+
+                x: {
+
+                    ticks: {
+                        color: '#e2e8f0',
+                        font: {
+                            size: 13,
+                            weight: 'bold'
+                        }
+                    },
+
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+};
+
+</script>
 
 @endsection

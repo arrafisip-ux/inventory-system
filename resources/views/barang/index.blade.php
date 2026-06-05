@@ -1,16 +1,37 @@
 @extends('layouts.app')
 
-@section('title','Barang')
+@section('title','Data Barang')
 @section('subtitle','Kelola data inventaris barang')
 
 @section('content')
 
 @include('partials.page-header')
 
-<a href="{{ route('barang.create') }}"
-   class="btn btn-primary mb-3">
-    Tambah Barang
-</a>
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+    <a href="{{ route('barang.create') }}"
+       class="btn btn-primary">
+        Tambah Barang
+    </a>
+
+    <form action="{{ route('barang.index') }}"
+          method="GET"
+          class="d-flex"
+          style="width:300px;">
+
+        <input type="text"
+               name="search"
+               value="{{ $search ?? '' }}"
+               class="form-control me-2"
+               placeholder="Cari barang...">
+
+        <button class="btn btn-success">
+            Cari
+        </button>
+
+    </form>
+
+</div>
 
 @if(session('success'))
 <div class="alert alert-success mb-3">
@@ -96,7 +117,13 @@
 
         </table>
 
-    </div>
+</div>
+
+<div class="mt-3">
+
+    {{ $barangs->links() }}
+
+</div>
 
 </div>
 
