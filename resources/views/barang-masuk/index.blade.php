@@ -7,9 +7,16 @@
 
 @include('partials.page-header')
 
-<button class="btn btn-success mb-3">
+<a href="{{ route('barang-masuk.create') }}"
+   class="btn btn-success mb-3">
     Tambah Barang Masuk
-</button>
+</a>
+
+@if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
 
 <div class="custom-card">
 
@@ -27,11 +34,33 @@
 
     <tbody>
 
+    @forelse($barangMasuks as $masuk)
+
         <tr>
-            <td>01-06-2026</td>
-            <td>Laptop</td>
-            <td>5</td>
+
+            <td>
+                {{ date('d-m-Y', strtotime($masuk->tanggal)) }}
+            </td>
+
+            <td>
+                {{ $masuk->barang->nama_barang }}
+            </td>
+
+            <td>
+                {{ $masuk->jumlah }}
+            </td>
+
         </tr>
+
+    @empty
+
+        <tr>
+            <td colspan="3" class="text-center">
+                Belum ada transaksi barang masuk
+            </td>
+        </tr>
+
+    @endforelse
 
     </tbody>
 

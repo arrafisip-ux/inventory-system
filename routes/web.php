@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangMasukController;
+use App\Http\Controllers\BarangKeluarController;
+
 Route::get('/', function () {
     return view('dashboard.index');
 });
@@ -10,25 +15,22 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->name('dashboard');
 
-use App\Http\Controllers\KategoriController;
-
 Route::resource('kategori', KategoriController::class);
 
-Route::get('/barang', function () {
-    return view('barang.index');
-});
+Route::resource('barang', BarangController::class);
 
-Route::get('/barang-masuk', function () {
-    return view('barang-masuk.index');
-});
+Route::resource(
+    'barang-masuk',
+    BarangMasukController::class
+);
 
-Route::get('/barang-keluar', function () {
-    return view('barang-keluar.index');
-});
+Route::resource(
+    'barang-keluar',
+    BarangKeluarController::class
+);
 
 Route::get('/laporan', function () {
     return view('laporan.index');
 });
-
 
 // require __DIR__.'/auth.php';

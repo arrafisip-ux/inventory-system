@@ -11,6 +11,7 @@ class Barang extends Model
         'nama_barang',
         'kategori_id',
         'stok',
+        'satuan',
         'harga'
     ];
 
@@ -27,5 +28,15 @@ class Barang extends Model
     public function barangKeluars()
     {
         return $this->hasMany(BarangKeluar::class);
+    }
+
+    public function getHargaRupiahAttribute()
+    {
+        return 'Rp ' . number_format(
+            $this->harga,
+            0,
+            ',',
+            '.'
+        );
     }
 }
