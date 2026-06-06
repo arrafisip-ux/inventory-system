@@ -39,11 +39,17 @@
                 Filter
             </button>
 
-            <button
-                type="button"
-                class="btn btn-success">
-                Cetak
-            </button>
+            <a
+    href="{{ route('laporan.cetak', [
+        'dari' => $dari,
+        'sampai' => $sampai
+    ]) }}"
+    target="_blank"
+    class="btn btn-success">
+
+    Cetak PDF
+
+</a>
 
         </div>
 

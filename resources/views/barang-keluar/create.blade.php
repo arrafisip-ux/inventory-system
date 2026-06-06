@@ -8,6 +8,15 @@
 @include('partials.page-header')
 
 <div class="custom-card">
+    @if(session('error'))
+
+<div class="alert alert-danger">
+
+    {{ session('error') }}
+
+</div>
+
+@endif
 
 <form action="{{ route('barang-keluar.store') }}"
       method="POST">
