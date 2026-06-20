@@ -70,18 +70,19 @@
         </li>
 
     </ul>
+    <div class="menu-title">
+    KEUANGAN
+</div>
 
-    <div class="menu-title">AKUN</div>
+<ul>
+    <li>
+        <a href="{{ route('keuangan.index') }}">
+            <i class='bx bx-wallet'></i>
+            Laporan Keuangan
+        </a>
+    </li>
+</ul>
 
-    <ul>
-
-        <li>
-            <a href="#">
-                <i class='bx bx-log-out'></i>
-                Logout
-            </a>
-        </li>
-
-    </ul>
+    
 
 </div>

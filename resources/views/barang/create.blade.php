@@ -73,13 +73,24 @@
         </div>
 
         <div class="mb-3">
-            <label>Harga</label>
+    <label>Harga Beli</label>
 
-            <input type="number"
-                   name="harga"
-                   class="form-control"
-                   required>
-        </div>
+    <input
+        type="number"
+        name="harga_beli"
+        class="form-control"
+        required>
+</div>
+
+<div class="mb-3">
+    <label>Harga Jual</label>
+
+    <input
+        type="number"
+        name="harga_jual"
+        class="form-control"
+        required>
+</div>
 
         <button class="btn btn-primary">
             Simpan

@@ -46,84 +46,87 @@
         <table class="table table-hover">
 
             <thead>
-            <tr>
-                <th>Kode</th>
-                <th>Nama Barang</th>
-                <th>Kategori</th>
-                <th>Stok</th>
-                <th>Satuan</th>
-                <th>Harga</th>
-                <th width="180">Aksi</th>
-            </tr>
-        </thead>
+                <tr>
+                    <th>Kode</th>
+                    <th>Nama Barang</th>
+                    <th>Kategori</th>
+                    <th>Stok</th>
+                    <th>Satuan</th>
+                    <th>Harga Beli</th>
+                    <th>Harga Jual</th>
+                    <th width="180">Aksi</th>
+                </tr>
+            </thead>
 
-        <tbody>
+            <tbody>
 
-        @forelse($barangs as $barang)
+            @forelse($barangs as $barang)
 
-            <tr>
+                <tr>
 
-                <td>{{ $barang->kode_barang }}</td>
+                    <td>{{ $barang->kode_barang }}</td>
 
-                <td>{{ $barang->nama_barang }}</td>
+                    <td>{{ $barang->nama_barang }}</td>
 
-                <td>{{ $barang->kategori->nama_kategori }}</td>
+                    <td>{{ $barang->kategori->nama_kategori }}</td>
 
-                <td>{{ $barang->stok }}</td>
+                    <td>{{ $barang->stok }}</td>
 
-                <td>{{ $barang->satuan }}</td>
+                    <td>{{ $barang->satuan }}</td>
 
-                <td>
-                    Rp {{ number_format($barang->harga,0,',','.') }}
-                </td>
+                    <td>
+                        Rp {{ number_format($barang->harga_beli,0,',','.') }}
+                    </td>
 
-                <td>
+                    <td>
+                        Rp {{ number_format($barang->harga_jual,0,',','.') }}
+                    </td>
 
-                    <a href="{{ route('barang.edit',$barang->id) }}"
-                       class="btn btn-warning btn-sm">
-                        Edit
-                    </a>
+                    <td>
 
-                    <form action="{{ route('barang.destroy',$barang->id) }}"
-                          method="POST"
-                          style="display:inline-block">
+                        <a href="{{ route('barang.edit',$barang->id) }}"
+                           class="btn btn-warning btn-sm">
+                            Edit
+                        </a>
 
-                        @csrf
-                        @method('DELETE')
+                        <form action="{{ route('barang.destroy',$barang->id) }}"
+                              method="POST"
+                              style="display:inline-block">
 
-                        <button
-                            class="btn btn-danger btn-sm"
-                            onclick="return confirm('Yakin hapus barang?')">
-                            Hapus
-                        </button>
+                            @csrf
+                            @method('DELETE')
 
-                    </form>
+                            <button
+                                class="btn btn-danger btn-sm"
+                                onclick="return confirm('Yakin hapus barang?')">
+                                Hapus
+                            </button>
 
-                </td>
+                        </form>
 
-            </tr>
+                    </td>
 
-        @empty
+                </tr>
 
-            <tr>
-                <td colspan="7" class="text-center">
-                    Belum ada data barang
-                </td>
-            </tr>
+            @empty
 
-        @endforelse
+                <tr>
+                    <td colspan="8" class="text-center">
+                        Belum ada data barang
+                    </td>
+                </tr>
 
-               </tbody>
+            @endforelse
+
+            </tbody>
 
         </table>
 
-</div>
+    </div>
 
-<div class="mt-3">
-
-    {{ $barangs->links() }}
-
-</div>
+    <div class="mt-3">
+        {{ $barangs->links() }}
+    </div>
 
 </div>
 

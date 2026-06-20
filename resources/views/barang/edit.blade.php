@@ -75,12 +75,22 @@
         </div>
 
         <div class="mb-3">
-            <label>Harga</label>
+            <label>Harga Beli</label>
 
             <input type="number"
-                   name="harga"
+                   name="harga_beli"
                    class="form-control"
-                   value="{{ $barang->harga }}"
+                   value="{{ $barang->harga_beli }}"
+                   required>
+        </div>
+
+        <div class="mb-3">
+            <label>Harga Jual</label>
+
+            <input type="number"
+                   name="harga_jual"
+                   class="form-control"
+                   value="{{ $barang->harga_jual }}"
                    required>
         </div>
 

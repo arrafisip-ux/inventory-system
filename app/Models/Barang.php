@@ -7,13 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Barang extends Model
 {
     protected $fillable = [
-        'kode_barang',
-        'nama_barang',
-        'kategori_id',
-        'stok',
-        'satuan',
-        'harga'
-    ];
+    'kode_barang',
+    'nama_barang',
+    'kategori_id',
+    'stok',
+    'satuan',
+    'harga_beli',
+    'harga_jual'
+];
 
     public function kategori()
     {
@@ -30,13 +31,23 @@ class Barang extends Model
         return $this->hasMany(BarangKeluar::class);
     }
 
-    public function getHargaRupiahAttribute()
-    {
-        return 'Rp ' . number_format(
-            $this->harga,
-            0,
-            ',',
-            '.'
-        );
-    }
+    public function getHargaBeliRupiahAttribute()
+{
+    return 'Rp ' . number_format(
+        $this->harga_beli,
+        0,
+        ',',
+        '.'
+    );
+}
+
+public function getHargaJualRupiahAttribute()
+{
+    return 'Rp ' . number_format(
+        $this->harga_jual,
+        0,
+        ',',
+        '.'
+    );
+}
 }

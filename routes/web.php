@@ -8,15 +8,19 @@ use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LaporanController;
-
-Route::get('/', function () {
-    return redirect()->route('dashboard');
-});
-
+use App\Http\Controllers\KeuanganController;
 use App\Models\Barang;
 use App\Models\Kategori;
 use App\Models\BarangMasuk;
 use App\Models\BarangKeluar;
+
+Route::get('/keuangan', [KeuanganController::class, 'index'])
+    ->name('keuangan.index');
+Route::get('/', function () {
+    return redirect()->route('dashboard');
+});
+
+
 
 Route::get('/dashboard', function () {
 

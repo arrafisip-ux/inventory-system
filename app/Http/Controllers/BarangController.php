@@ -9,27 +9,28 @@ use Illuminate\Http\Request;
 class BarangController extends Controller
 {
     public function index(Request $request)
-{
-    $search = $request->search;
+    {
+        $search = $request->search;
 
-    $barangs = Barang::with('kategori')
-    ->when($search, function ($query) use ($search) {
+        $barangs = Barang::with('kategori')
+            ->when($search, function ($query) use ($search) {
 
-        $query->where('nama_barang', 'like', '%' . $search . '%')
-              ->orWhere('kode_barang', 'like', '%' . $search . '%');
+                $query->where('nama_barang', 'like', '%' . $search . '%')
+                    ->orWhere('kode_barang', 'like', '%' . $search . '%');
 
-    })
-    ->latest()
-    ->paginate(5);
+            })
+            ->latest()
+            ->paginate(5);
 
-    return view(
-        'barang.index',
-        compact(
-            'barangs',
-            'search'
-        )
-    );
-}
+        return view(
+            'barang.index',
+            compact(
+                'barangs',
+                'search'
+            )
+        );
+    }
+
     public function create()
     {
         $kategoris = Kategori::all();
@@ -45,7 +46,8 @@ class BarangController extends Controller
             'kategori_id' => 'required',
             'stok' => 'required|numeric',
             'satuan' => 'required',
-            'harga' => 'required|numeric'
+            'harga_beli' => 'required|numeric',
+            'harga_jual' => 'required|numeric'
         ]);
 
         Barang::create([
@@ -54,7 +56,8 @@ class BarangController extends Controller
             'kategori_id' => $request->kategori_id,
             'stok' => $request->stok,
             'satuan' => $request->satuan,
-            'harga' => $request->harga
+            'harga_beli' => $request->harga_beli,
+            'harga_jual' => $request->harga_jual
         ]);
 
         return redirect('/barang')
@@ -71,10 +74,13 @@ class BarangController extends Controller
         $barang = Barang::findOrFail($id);
         $kategoris = Kategori::all();
 
-        return view('barang.edit', compact(
-            'barang',
-            'kategoris'
-        ));
+        return view(
+            'barang.edit',
+            compact(
+                'barang',
+                'kategoris'
+            )
+        );
     }
 
     public function update(Request $request, string $id)
@@ -87,7 +93,8 @@ class BarangController extends Controller
             'kategori_id' => 'required',
             'stok' => 'required|numeric',
             'satuan' => 'required',
-            'harga' => 'required|numeric'
+            'harga_beli' => 'required|numeric',
+            'harga_jual' => 'required|numeric'
         ]);
 
         $barang->update([
@@ -96,7 +103,8 @@ class BarangController extends Controller
             'kategori_id' => $request->kategori_id,
             'stok' => $request->stok,
             'satuan' => $request->satuan,
-            'harga' => $request->harga
+            'harga_beli' => $request->harga_beli,
+            'harga_jual' => $request->harga_jual
         ]);
 
         return redirect('/barang')
