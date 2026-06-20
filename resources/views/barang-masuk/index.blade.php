@@ -20,7 +20,7 @@
 
 <div class="custom-card">
 
-<table class="table table-dark table-hover">
+<table class="table table-hover">
 
     <thead>
 

@@ -14,6 +14,10 @@
 
 <body>
 
+<button id="theme-toggle" class="theme-btn">
+    <i class='bx bx-moon'></i>
+</button>
+
 <div class="container-fluid">
     <div class="row">
 
@@ -31,7 +35,44 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const themeToggle = document.getElementById('theme-toggle');
+
+    const savedTheme = localStorage.getItem('theme');
+
+    if(savedTheme === 'light'){
+        document.body.classList.add('light-mode');
+        themeToggle.innerHTML = "<i class='bx bx-sun'></i>";
+    }
+
+    themeToggle.addEventListener('click', function () {
+
+        document.body.classList.toggle('light-mode');
+
+        if(document.body.classList.contains('light-mode')){
+
+            localStorage.setItem('theme', 'light');
+
+            themeToggle.innerHTML =
+                "<i class='bx bx-sun'></i>";
+
+        }else{
+
+            localStorage.setItem('theme', 'dark');
+
+            themeToggle.innerHTML =
+                "<i class='bx bx-moon'></i>";
+        }
+
+    });
+
+});
+</script>
 
 </body>
 </html>

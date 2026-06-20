@@ -89,22 +89,21 @@
 
             <ul class="activity-list">
 
-    <li class="activity-success">
-        Barang Laptop ditambahkan
-    </li>
-
-    <li class="activity-danger">
-        Barang Printer keluar
-    </li>
-
     <li class="activity-info">
-        Kategori Elektronik dibuat
-    </li>
+    Total Barang : {{ $totalBarang }}
+</li>
 
-    <li class="activity-warning">
-        Update stok Mouse
-    </li>
+<li class="activity-info">
+    Total Kategori : {{ $totalKategori }}
+</li>
 
+<li class="activity-success">
+    Total Barang Masuk : {{ $barangMasuk }}
+</li>
+
+<li class="activity-danger">
+    Total Barang Keluar : {{ $barangKeluar }}
+</li>
 </ul>
 
         </div>
@@ -119,6 +118,17 @@
 window.onload = function () {
 
     const canvas = document.getElementById('inventoryChart');
+
+    const isLightMode =
+        document.body.classList.contains('light-mode');
+
+    const chartTextColor =
+        isLightMode ? '#334155' : '#e2e8f0';
+
+    const chartGridColor =
+        isLightMode
+            ? 'rgba(0,0,0,0.08)'
+            : 'rgba(255,255,255,0.08)';
 
     new Chart(canvas, {
 
@@ -145,27 +155,31 @@ window.onload = function () {
                 ],
 
                 backgroundColor: [
-                    '#2563eb',
-                    '#10b981',
+                    '#3b82f6',
+                    '#22c55e',
                     '#f59e0b',
                     '#ef4444'
                 ],
 
                 borderRadius: 12
+
             }]
+
         },
 
         options: {
 
             responsive: true,
 
+            maintainAspectRatio: false,
+
             plugins: {
 
-    legend: {
-        display: false
-    }
+                legend: {
+                    display: false
+                }
 
-},
+            },
 
             scales: {
 
@@ -174,21 +188,22 @@ window.onload = function () {
                     beginAtZero: true,
 
                     ticks: {
-                        color: '#e2e8f0',
+                        color: chartTextColor,
                         font: {
                             size: 13
                         }
                     },
 
                     grid: {
-                        color: 'rgba(255,255,255,0.08)'
+                        color: chartGridColor
                     }
+
                 },
 
                 x: {
 
                     ticks: {
-                        color: '#e2e8f0',
+                        color: chartTextColor,
                         font: {
                             size: 13,
                             weight: 'bold'
@@ -198,12 +213,16 @@ window.onload = function () {
                     grid: {
                         display: false
                     }
+
                 }
+
             }
+
         }
+
     });
+
 };
 
 </script>
-
 @endsection
